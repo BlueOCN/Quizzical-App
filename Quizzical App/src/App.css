@@ -1,0 +1,87 @@
+
+.menu {
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.menu-title {
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: 'Karla', sans-serif;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: auto;
+  text-align: top;
+  vertical-align: center;
+  color: #293264;
+}
+
+.menu-info {
+  margin: 0;
+  margin-bottom: 29px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: auto;
+  text-align: top;
+  vertical-align: center;
+  color: #293264;
+}
+
+.menu-button {
+  padding: 18px 60px;
+  border: none;
+  border-radius: 15px;
+  background-color: #4D5B9E;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: auto;
+  text-align: top;
+  vertical-align: center;
+  color: #F5F7FB;
+}
+
+.quizz {
+  padding: 40px 75px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.question-container{
+  font-family: 'Karla', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: auto;
+  text-align: left;
+  vertical-align: center;
+  color: #293264;
+}
+
+.quizz-button {
+  align-self: center;
+  margin: 10px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4D5B9E;
+
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: auto;
+  text-align: center;
+  vertical-align: top;
+  color: #F5F7FB;
+}
