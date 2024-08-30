@@ -1,6 +1,7 @@
 
 import { useState, useEffect} from 'react'
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
 import he from 'he'
 import Question from './components/Question'
 import './App.css'
@@ -75,7 +76,8 @@ function App() {
       questionArray.push({
         id: nanoid(),
         question: he.decode(apiData.results[index].question), 
-        answers: shuffleAnswers(answersArray.concat(in_ans))
+        answers: shuffleAnswers(answersArray.concat(in_ans)),
+        isCorrect: false
       })
     }
     return questionArray
@@ -88,7 +90,6 @@ function App() {
     setQuizzing(prevQuizzing => !prevQuizzing)
   }
 
-  console.log(allQuestions)
 
   /* function checkAnswers() {
     setCheck(prevCheck => !prevCheck)
@@ -115,14 +116,16 @@ function App() {
   } */
 
   const checkAnswers = () => {
-    let newScore = 0;
     setCheck(prev => !prev);
     setAllQuestions(prevQuestions => {
+      var newScore = 0;
       return prevQuestions.map(question => {
         const newAnswers = question.answers.map(answer => {
+
           if (answer.isRight) {
             if (answer.isSelected) {
-              newScore++;
+              newScore = newScore + 1;
+              setScore(newScore % 6);
             }
             return { ...answer, style: 3 }; // Correct answer, highlighted
           }
@@ -131,7 +134,6 @@ function App() {
         return { ...question, answers: newAnswers };
       });
     });
-    setScore(newScore);
   };
 
 
@@ -159,11 +161,11 @@ function App() {
 
   const questionElements = allQuestions.map((prevQuestion) => (
     <Question 
-      key={prevQuestion.id}
-      id={prevQuestion.id}
-      query={prevQuestion.question} 
-      answers={prevQuestion.answers}
-      selectAnswer={selectAnswer}
+      key={ prevQuestion.id }
+      id={ prevQuestion.id }
+      query={ prevQuestion.question } 
+      answers={ prevQuestion.answers }
+      selectAnswer={ selectAnswer }
     />
   ))
 
@@ -171,29 +173,30 @@ function App() {
     <>
       <img className="blob1" src="./Blob1.svg" alt="blob1" />
       <img className="blob2" src="./Blob2.svg" alt="blob2" />
-      { quizzing ? 
-      <main className='quizz'>
-        <div className='quizz-container'>
-          { questionElements }
-        </div>
 
-        <div className='button-container'>
-          { check && <h2 className='results'>You scored {score}/5 correct answers</h2> }
-          
-          { check ?
-            <button className='quizz-button' onClick={() => startQuizzing()}>Play again</button>
+      { quizzing ? 
+        <main className='quizz'>
+          { check && score===5 && <Confetti />}
+          <div className='quizz-container'>
+            { questionElements }
+          </div>
+
+          <div className='button-container'>
+            { check && <h2 className='results'>You scored {score}/5 correct answers</h2> }
+            
+            { check ?
+              <button className='quizz-button' onClick={() => startQuizzing()}>Play again</button>
             :
-            <button className='quizz-button' onClick={() => checkAnswers()}>Check answers</button>
-          }
-        </div>
-        
-      </main> 
+              <button className='quizz-button' onClick={() => checkAnswers()}>Check answers</button>
+            }
+          </div>
+        </main> 
       : 
-      <main className='menu'>
-        <h1 className='menu-title'>Quizzical</h1>
-        <p className='menu-info'>If you know you know what you know know ...</p>
-        <button className='menu-button' onClick={() => startQuizzing()}>Start quiz</button>
-      </main>
+        <main className='menu'>
+          <h1 className='menu-title'>Quizzical</h1>
+          <p className='menu-info'>If you know you know what you know know ...</p>
+          <button className='menu-button' onClick={() => startQuizzing()}>Start quiz</button>
+        </main>
       }
     </>
   )
