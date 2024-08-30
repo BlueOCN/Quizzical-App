@@ -1,6 +1,23 @@
+.blob1 {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 70vw; /* Adjust as needed */
+  height: 70vw; /* Adjust as needed */
+  transform: translate(calc(-50% + 10px), calc(50% - 10px));
+}
+
+.blob2 {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 70vw; /* Adjust as needed */
+  height: 70vw; /* Adjust as needed */
+  transform: translate(calc(50% - 20px), calc(-50% + 20px));
+}
 
 .menu {
-  padding: 40px;
+  padding: 2.5em;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -11,9 +28,9 @@
 
 .menu-title {
   margin: 0;
-  margin-bottom: 10px;
+  margin-bottom: 0.625em;
   font-family: 'Karla', sans-serif;
-  font-size: 31px;
+  font-size: 1.938em;
   font-weight: 700;
   line-height: auto;
   text-align: top;
@@ -23,50 +40,71 @@
 
 .menu-info {
   margin: 0;
-  margin-bottom: 29px;
+  margin-bottom: 1.813em;
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 400;
   line-height: auto;
-  text-align: top;
-  vertical-align: center;
+  text-align: center;
+  vertical-align: top;
   color: #293264;
 }
 
 .menu-button {
-  padding: 16px 60px;
+  padding: 1em 3.75em;
   border: none;
-  border-radius: 15px;
+  border-radius: 0.938em;
   background-color: #4D5B9E;
 
   font-family: 'Inter', sans-serif;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 400;
   line-height: auto;
   text-align: top;
   vertical-align: center;
   color: #F5F7FB;
+  cursor: pointer;
 }
 
 .quizz {
-  padding: 50px 90px;
+  position: relative;
+  width: 100%;
   height: 100%;
+  padding: 3.125em 5.625em;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  align-content: center;
+  overflow: hidden; /* Prevent scroll on .quizz, only .quizz-container will scroll */
+}
+
+.quizz-container {
+  position: relative;
+  width: 100%;
+  max-height: 100%; /* Adjust or use a specific value to fit within .quizz */
+  overflow-y: auto; /* Enable vertical scrolling */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start; /* Align items to the top to ensure they are visible */
 }
 
 .question-container{
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .query {
+  align-self: flex-start;
   font-family: 'Karla', sans-serif;
   font-size: auto;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 700;
   line-height: auto;
   text-align: left;
@@ -76,22 +114,25 @@
 }
 
 .answers {
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: stretch;
   align-items: center;
-  gap: 20px;
-}
+  gap: 0.6em 0.6em;
+} 
 
 .answers-button {
-  padding: 5px 24px;
-  border: 0.79px solid #4D5B9E;
-  border-radius: 8px;
+  padding: 0.313em 1.5em;
+  border: 0.05em solid #4D5B9E;
+  border-radius: 0.5em;
   background-color: #F5F7FB;
 
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 0.625em;
+  font-weight: 600;
   line-height: auto;
   text-align: center;
   vertical-align: top;
@@ -101,16 +142,18 @@
 }
 
 .button-container {
+  margin: 0.938em;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 0.938em;
 }
 
 .results {
   font-family: 'Inter', sans-serif;
-  font-size: 13px;
+  font-size: 0.813em;
   font-weight: 600;
   line-height: auto;
   text-align: top;
@@ -119,17 +162,131 @@
 
 .quizz-button {
   align-self: center;
-  margin: 10px;
-  padding: 12px 25px;
+  margin: 0.625em;
+  padding: 0.75em 1.563em;
   border: none;
-  border-radius: 10px;
+  border-radius: 0.625em;
   background-color: #4D5B9E;
 
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
+  font-size: 0.625em;
   font-weight: 500;
   line-height: auto;
   text-align: center;
   vertical-align: top;
   color: #F5F7FB;
 }
+
+.button-selected-blue {
+  border: 0.063em solid transparent;
+  background-color: #d6dbf5;
+  color: #293264;
+}
+
+.button-faded-blue {
+  opacity: 50%;
+  background-color: #F5F7FB;
+  color: #293264;
+}
+
+.button-green {
+  border: 0.063em solid transparent;
+  background-color: #94D7A2;
+  color: #293264;
+}
+
+.button-faded-red {
+  opacity: 50%;
+  border: 0.063em solid transparent;
+  background-color: #F8BCBC;
+  color: #293264;
+}
+
+.button-blue {
+  background-color: #F5F7FB;
+  color: #293264;
+}
+
+/* Styles for screens larger than 768px */
+/* 
+@media (min-width: 768px) {
+  .query {
+    font-family: 'Karla', sans-serif;
+    font-size: auto;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: auto;
+    text-align: left;
+    vertical-align: center;
+    color: #293264;
+    cursor: default;
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    align-items: center;
+    gap: 1.25rem 0.5rem;
+  } 
+
+  .answers-button {
+    padding: 0.313rem 1.5rem;
+    border: 0.05rem solid #4D5B9E;
+    border-radius: 0.5rem;
+    background-color: #F5F7FB;
+  
+    font-family: 'Inter', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    line-height: auto;
+    text-align: center;
+    vertical-align: top;
+    color: #293264;
+  
+    cursor: pointer;
+  }
+} */
+
+/* Styles for screens smaller than 768px */
+/* 
+@media (max-width: 767px) {
+  .query {
+    font-family: 'Karla', sans-serif;
+    font-size: auto;
+    font-size: 0.5rem;
+    font-weight: 700;
+    line-height: auto;
+    text-align: left;
+    vertical-align: center;
+    color: #293264;
+    cursor: default;
+  }
+
+  .answers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    align-items: center;
+    gap: 1.25rem 0.5rem;
+  }
+
+  .answers-button {
+    padding: 0.150rem 0.75rem;
+    border: 0.05rem solid #4D5B9E;
+    border-radius: 0.5rem;
+    background-color: #F5F7FB;
+  
+    font-family: 'Inter', sans-serif;
+    font-size: 0.3rem;
+    font-weight: 600;
+    line-height: auto;
+    text-align: center;
+    vertical-align: top;
+    color: #293264;
+  
+    cursor: pointer;
+  }
+} */
